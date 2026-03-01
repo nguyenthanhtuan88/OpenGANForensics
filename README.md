@@ -20,8 +20,8 @@ We collected our own dataset using the code and models released by [PTI](https:/
 1. Install dependencies: `pip install -r requirements.txt`.
 2. Prepare data:
    - Facial attribute edit: place images/masks under `./data/` (or custom path) and update `labels_train_list.txt`, `labels_valid_list.txt`.
-   - GAN attribution: default splits live under the legacy `./dati/` folder name (kept for compatibility); you can rename it (e.g., `./gan_attribution/`) by pointing `--data_path` to your folder.
-3. (Optional) Download pretrained models (link below) and place them in `./save_models/`. `--save_models` controls where training saves checkpoints; `--weights_path` is used when loading a pretrained/resumed model.
+   - GAN attribution: default splits live under the legacy `./dati/` folder name (kept from the original dataset/configs); you can rename it (e.g., `./gan_attribution/`) by pointing `--data_path` to your folder.
+3. (Optional) Download pretrained models (link below) and place them in `./save_models/`. Use `--save_models <path>` to choose where training saves checkpoints; use `--weights_path <file>` to load a specific pretrained model.
 4. Check VRAM availability: batch size 32 is suitable for ≥24GB VRAM; reduce `--batch` if memory is limited.
 
 ## 2. Training and testing
@@ -57,7 +57,7 @@ python3 test_osr.py -m ./save_models/resnet50ND_Vit2_S2_4_b32/**.pth  --nodown -
   - Use `--nodown` (without `--loc`) for GAN attribution open-set classification.
 - **Pretrain & fine-tune**: Add `--pretrain --weights_path <file>` for better initialization, especially with limited data.
 - **Tune the ViT head**: Smaller `--patch_size` captures finer details; increase `--dim`, `--depth`, `--head` if GPU memory allows.
-- **Balance the losses**: Adjust `--lambda_locs` and `--lambda_clss`; raise `lambda_locs` when high-quality masks are available.
+- **Balance the losses**: Adjust `--lambda_locs` and `--lambda_clss`; raise `--lambda_locs` when high-quality masks are available.
 - **Control overfitting**: Use `--patient` for early stopping; consider lowering `--lr` or increasing `--drop` if validation accuracy oscillates.
 - **Evaluate open-set robustness**: Run `test_osr.py` with the dedicated open-set split (per `configs.txt`) to assess generalization.
 ### Pre-trained Model
