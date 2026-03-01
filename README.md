@@ -20,8 +20,8 @@ We collected our own dataset using the code and models released by [PTI](https:/
 1. Install dependencies: `pip install -r requirements.txt`.
 2. Prepare data:
    - Facial attribute edit: place images/masks under `./data/` (or custom path) and update `labels_train_list.txt`, `labels_valid_list.txt`.
-   - GAN attribution: use the `./dati/` folder structure with splits defined in `configs.txt`. Note: `dati` is the designated folder name for GAN attribution data.
-3. (Optional) Download pretrained models (link below) and place them in `./save_models/`.
+   - GAN attribution: default splits live under the `./dati/` folder; keep this name or set `--data_path` to your custom location.
+3. (Optional) Download pretrained models (link below) and place them in `./save_models/` (or any folder you pass to `--save_models` / `--weights_path`—examples below use `./saved_model/`).
 4. Check VRAM availability: batch size 32 is suitable for ≥24GB VRAM; reduce batch if memory is limited.
 
 ## 2. Training and testing
