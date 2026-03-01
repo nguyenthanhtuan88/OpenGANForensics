@@ -20,8 +20,8 @@ We collected our own dataset using the code and models released by [PTI](https:/
 1. Install dependencies: `pip install -r requirements.txt`.
 2. Prepare data:
    - Facial attribute edit: place images/masks under `./data/` (or custom path) and update `labels_train_list.txt`, `labels_valid_list.txt`.
-   - GAN attribution: default splits live under the legacy `./dati/` folder name (kept from the original dataset); keep it or change via `--data_path` to your folder.
-3. (Optional) Download pretrained models (link below) and place them in `./save_models/` (`--save_models` controls where training saves checkpoints; `--weights_path` is used when loading a pretrained/resumed model).
+   - GAN attribution: default splits live under the legacy `./dati/` folder name (kept for compatibility); you can rename it (e.g., `./gan_attribution/`) by pointing `--data_path` to your folder.
+3. (Optional) Download pretrained models (link below) and place them in `./save_models/`. `--save_models` controls where training saves checkpoints; `--weights_path` is used when loading a pretrained/resumed model.
 4. Check VRAM availability: batch size 32 is suitable for ≥24GB VRAM; reduce `--batch` if memory is limited.
 
 ## 2. Training and testing
