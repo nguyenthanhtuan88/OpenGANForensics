@@ -20,8 +20,8 @@ We collected our own dataset using the code and models released by [PTI](https:/
 1. Install dependencies: `pip install -r requirements.txt`.
 2. Prepare data:
    - Facial attribute edit: place images/masks under `./data/` (or custom path) and update `labels_train_list.txt`, `labels_valid_list.txt`.
-   - GAN attribution: default splits live under the `./dati/` folder; keep this name or set `--data_path` to your custom location.
-3. (Optional) Download pretrained models (link below) and place them in `./save_models/` (or any folder you pass to `--save_models` / `--weights_path`—examples below use `./saved_model/`).
+   - GAN attribution: default splits live under the `./dati/` folder to separate GAN attribution data from facial-attribute data; keep this name or change it via `--data_path`.
+3. (Optional) Download pretrained models (link below) and place them in `./save_models/` (or any folder you pass to `--save_models` / `--weights_path`).
 4. Check VRAM availability: batch size 32 is suitable for ≥24GB VRAM; reduce batch if memory is limited.
 
 ## 2. Training and testing
@@ -44,11 +44,11 @@ For open set test, simply run the command:
 
 Run hybrid classification and localization network for facial attribute edit images
 ```Open set test for facial attribute edit classification
-python3 test_osr.py -m ./saved_model/resnet50ND_Vit2_S2_4_b32/**.pth --loc --nodown --pretrain --classes 11 --data_path ./data/
+python3 test_osr.py -m ./save_models/resnet50ND_Vit2_S2_4_b32/**.pth --loc --nodown --pretrain --classes 11 --data_path ./data/
 ```
 Run classification network for GAN attribution task
 ```Open set test for GAN attribution
-python3 test_osr.py -m ./saved_model/resnet50ND_Vit2_S2_4_b32/**.pth  --nodown --pretrain --classes 3 --data_path ./dati/
+python3 test_osr.py -m ./save_models/resnet50ND_Vit2_S2_4_b32/**.pth  --nodown --pretrain --classes 3 --data_path ./dati/
 ```
 
 ### Usage tips for best results
