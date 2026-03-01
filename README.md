@@ -17,12 +17,12 @@ Before running the code, please configure your env following the requirement fil
 We collected our own dataset using the code and models released by [PTI](https://github.com/danielroich/PTI).
 
 ### Quick setup checklist
-1. Install dependencies: `pip install -r requirements.txt`.
+1. Install dependencies: `pip install -r requirements.txt` (file included in this repo).
 2. Prepare data:
    - Facial attribute edit: place images/masks under `./data/` (or custom path) and update `labels_train_list.txt`, `labels_valid_list.txt`.
-   - GAN attribution: default splits live under the legacy `./dati/` folder name (kept from the original dataset/configs); you can rename it (e.g., `./gan_attribution/`) by pointing `--data_path` to your folder.
+   - GAN attribution: images are expected in `./dati/` by default (legacy folder name); use `--data_path` to point to a different location.
 3. (Optional) Download pretrained models (link below) and place them in `./save_models/`. Use `--save_models <path>` to choose where training saves checkpoints; use `--weights_path <file>` to load a specific pretrained model.
-4. Check VRAM availability: batch size 32 is suitable for ≥24GB VRAM; reduce `--batch` if memory is limited.
+4. Check VRAM availability: batch size 32 is suitable for >= 24GB VRAM; reduce `--batch` if memory is limited.
 
 ## 2. Training and testing
 
